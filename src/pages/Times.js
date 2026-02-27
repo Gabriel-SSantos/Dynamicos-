@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react'
-import style from '../components/pages/Cadastro/cadastros.module.css'
+import style from '../layout/styles/times.module.css'
 
 import TimeCadastro from './TimeCadastro';
-import { BotaoCadastro } from '../components/pages/Cadastro/AddCadastro';
+import { BotaoCadastro } from '../pages/TimeCadastro';
 
 import { TimeEdit } from './TimeCadastro';
-import EditCadastro from '../components/pages/Cadastro/EditCadastro';
+import LinkButton from '../layout/LinkButton';
 
 export default function Times(){
 
     const Ficha = ({nome, pontos,id,edit,apagar})=>{
-    return(
+   
+        return(
         <div className={`${style.card}`}>
                
                 <div>
@@ -29,7 +30,7 @@ export default function Times(){
     )
     }
 
-    const [cadastros,setCadastros] = useState()
+    const [times,setTimes] = useState()
     const [cadastrar,setCadastrar] = useState(false)
     const [editavel,setEditavel] = useState(false)
     const [editIndex,setEditIndex] = useState(-1)
@@ -50,30 +51,30 @@ export default function Times(){
 
     const Apagar = (i)=>{
         let NovoVetor = []
-        cadastros.map((intem,index)=>{
+        times.map((intem,index)=>{
             if (index != i){
                 NovoVetor.push(intem)
             }
         })
         localStorage.setItem('DynamicosTimes',JSON.stringify(NovoVetor))
-        setCadastros(NovoVetor)
+        setTimes(NovoVetor)
     }
 
     useEffect(()=>{
         const Lista = JSON.parse(localStorage.getItem('DynamicosTimes'))
-        setCadastros(Lista)
+        setTimes(Lista)
     },[cadastrar,editavel])
 
     return(
-        <section className={`${style.cad_container}`}>
-            {cadastros? <p>Aqui estão seus cadastros</p>:<p>Nenhum cadastro encontrado, adicione seus jogadores</p>}
+        <section className={`${style.container}`}>
+            {times? <p>Aqui estão seus cadastros</p>:<p>Nenhum cadastro encontrado, adicione seus jogadores</p>}
             <BotaoCadastro 
                 cadastramento={ativarCadastramento}/>
             {editavel && <TimeEdit i={editIndex} editavel={desativarEdicao}/>}
             {cadastrar && <TimeCadastro
             cadastramento={desativarCadastramento}/>}
-            {cadastros && 
-                cadastros.map((time,index)=>
+            {times && 
+                times.map((time,index)=>
                     (<Ficha 
                         key={index}
                         id = {index}
@@ -81,12 +82,16 @@ export default function Times(){
                         pontos={time.pontos}
                         edit={indiceEdit}
                         apagar={Apagar}
-                        />))}
+                        />)) }
+            
             <div
                 style={{
                     marginBottom: "80px",
                 }}
             >
+                {times &&
+                    <LinkButton to={"/Desafio"} text={"Começar Jogo"} state={{times:times}}/>
+                }
                 {}
             </div>
         </section>

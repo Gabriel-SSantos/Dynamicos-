@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react"
-import style from '../components/pages/Cadastro/cadastros.module.css'
+import style from '../layout/styles/times.module.css'
 
 export const BotaoCadastro=({cadastramento})=>{
     return(
         <div 
             onClick={cadastramento}
             className={`${style.botao}`}>
-            <p>Adicionar Novo</p>
+            <p>Adicionar Time</p>
         </div>
     )
 }
@@ -17,7 +17,7 @@ export const BotaoCadastro=({cadastramento})=>{
             jogadores[i].nome = nome
         }else jogadores.push({nome:nome,pontos:0})
         localStorage.setItem('DynamicosTimes',JSON.stringify(jogadores))
-    }
+}
 
 
 export default function TiemCadastro({cadastramento}){
@@ -28,8 +28,8 @@ export default function TiemCadastro({cadastramento}){
     }
 
     return (
-        <div>
-        <div><p style={{fontSize:"15px",textAlign:"center"}}>Preencha o formulário para fazer o cadastro</p><p onClick={cadastramento}>X</p></div>
+        <div className={`${style.cad_box}`}>
+        <div><spam style={{display:"flex"}} onClick={cadastramento}>X</spam><p style={{fontSize:"15px",textAlign:"center"}}>Preencha o formulário para fazer o cadastro</p></div>
         
         <div><p>Nome: </p><input 
             type='text'
@@ -84,6 +84,7 @@ export function TimeEdit({editavel,i}){
                 salvar({nome:nome,i})
             }}
         >Salvar</button>
+       
     </div>
     )
 

@@ -1,0 +1,88 @@
+{
+  "Desafios": [
+    {
+        "nome": "Nível 1",
+        "pontos": 1,
+        "desafios":[
+            "Redenção",
+            "Adoração",
+            "Unção",
+            "Promessa",
+            "Eternidade",
+            "Santidade"  
+        ]
+
+    },{
+        "nome": "Nível 2",
+        "pontos": 2,
+        "desafios":[
+            "Libertação",
+            "Aliança",
+            "Soberano",
+            "Majestade",
+            "Sacrifício",
+            "Ressurreição",
+            "Cordeiro"
+        ]
+    },{
+        "nome": "Nível 3",
+        "pontos": 3,
+        "desafios":[
+            "Quem foi o pai de Isaque? - Abraão",
+            "Quem foi vendido pelos próprios irmãos? - José",
+            "Quem era o irmão de Moisés? - Arão",
+            "Qual era o nome da esposa de Abraão? - Sara",
+            "Quem foi o sucessor de Moisés? - Josué",
+            "Quem era o pai de João Batista? - Zacarias",
+            "Qual discípulo era cobrador de impostos? - Mateus",
+            "Quem foi a primeira mulher criada por Deus? - Eva",
+            "Quem foi o primeiro rei de Israel? - Saul",
+            "Quem escreveu muitos Salmos e também foi rei? - Davi"
+        ]
+    },{
+        "nome": "Nível 4",
+        "pontos": 4,
+        "desafios":[
+            "Qual era o nome do gigante derrotado por Davi? - Golias",
+            "Em qual cidade Jesus transformou água em vinho? - Caná da Galileia",
+            " Qual era o nome do jardim onde Jesus orou antes de ser preso? - Getsêmani",
+            "Quem era a mãe de Samuel? - Ana",
+            "Quem interpretou a escrita na parede para o rei Belsazar? - Daniel",
+            "Qual livro vem depois de Atos dos Apóstolos? - Romanos",
+            "Quem foi o rei que construiu o templo em Jerusalém? - Salomão",
+            "Quem foi lançado na fornalha ardente com seus amigos? - Sadraque, Mesaque e Abede-Nego",
+            "Qual discípulo duvidou da ressurreição de Jesus? - Tomé",
+            "Quem foi a esposa de Isaque? - Rebeca"
+    ]
+    },{
+        "nome": "Nível 5",
+        "pontos": 5,
+        "desafios":[
+            "Quem substituiu Judas como discípulo? - Matias",
+            "Quem interpretou o sonho de Faraó? - José",
+            "Qual rei pediu sabedoria a Deus? - Salomão",
+            "Qual foi o primeiro milagre de Jesus? - Transformar água em vinho",
+            "Em qual monte Moisés recebeu os mandamentos? - Monte Sinai",
+            "Quantos discípulos estavam no cenáculo no dia de Pentecostes? - Aproximadamente 120",
+            "Quem escreveu o livro de Apocalipse? - João",
+            "Quem foi o pai do rei Davi? - Jessé",
+            "Qual profeta confrontou o rei Acabe? - Elias",
+            "Quem foi o governador que interrogou Jesus antes da crucificação? - Pôncio Pilatos"
+    ]
+    },{
+        "nome": "Nivel 6",
+        "pontos": 6,
+        "desafios":[
+        "Qual era o nome original de Abraão? - Abrão",
+        "Qual era o nome original de Jacó após lutar com o anjo? - Israel",
+        "Quantos livros tem a Bíblia protestante? - 66",
+        "Qual era o nome do sacerdote que criou Samuel no templo? - Eli",
+        "Quem foi o pai de Salomão? - Davi",
+        "Qual era o nome da ilha onde João recebeu a revelação do Apocalipse? - Patmos",
+        "Qual era o nome do homem que ajudou Jesus a carregar a cruz? - Simão Cireneu",
+        "Qual era a profissão de Paulo antes de se converter? - Fariseu / fazedor de tendas",
+        "Quem foi o rei que viu a mão escrevendo na parede? - Belsazar",
+        "Quantos capítulos tem o livro de Salmos? - 150"
+    ]
+    }
+]}
