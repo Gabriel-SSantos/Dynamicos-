@@ -6,12 +6,26 @@
     justify-content: space-between;
 }
 .container section{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
     font-size: 20px;
     font-weight: 500;
-    height: 70%;
+    /* height: 70%; */
     
 }
-
+.chegada{
+    background-color: rgba(110, 109, 109, 0.476);
+    width: 100%;
+    border-radius: 10px 10px 0px 0px;
+    text-align: center;
+    position: absolute;
+    
+}
+.chegada p{
+    color: white;
+    margin: 10px;
+}
 .headr{
     background-color: white;
     padding: 10px;
@@ -32,6 +46,57 @@
     background-color: rgb(255, 158, 170);
     width: 40%;
 }
+
+.vencedor{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(125, 125, 125, 0.441);
+    position: absolute;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.vencedor button{
+     display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 40%;
+    background-color: #ffffffd7;
+    color: #ac7048;
+    padding: 0.3em;
+    text-decoration: none;
+    transition: 0.5s;
+    margin: 1em;
+    border: solid;
+    border-color: rgb(190, 58, 74);
+    box-shadow: 2px 2px rgba(190, 58, 73, 0.422);
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: 600;
+
+   
+}
+
+.vencedor div{
+    text-align: center;
+}
+.vencedor div p{
+    font-weight: 600;
+}
+.parabens{
+    margin: 10px;
+    font-size: 55px;
+    font-weight: 900;
+    background: linear-gradient(to top,rgb(255, 0, 0),rgb(134, 47, 0),black);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: rgb(190, 58, 74);
+}
+
 
 .card{
     background-color: white;

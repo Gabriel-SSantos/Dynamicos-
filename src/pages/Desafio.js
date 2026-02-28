@@ -1,21 +1,34 @@
 import { useState, useEffect } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
-import Desafios from "../data/dados.json"
 import style from "../layout/styles/desafio.module.css"
+ let desafios = JSON.parse(localStorage.getItem('DynamicosDesafios')) 
+
 function retirarDesafio(desafioLista){
   const j = Math.floor(Math.random() * (desafioLista.length))
-  return desafioLista[j]
+  let desafioAtual = desafioLista[j]
+  let temp
+  for(let i = j; i < desafioLista.length - 1; i++){
+    temp = desafioLista[i]
+    desafioLista[i] = desafioLista[i+1]
+    desafioLista[i+1] = temp
+  }
+  desafioLista.pop()
+  return desafioAtual
 }
 
-function GirarDado({time}){
+function GirarDado({time,index}){
     const navigate = useNavigate()
     const [valorExibido, setValorExibido] = useState('?')
     const [rolando, setRolando] = useState(false)
     const [dadoValor, setDadoValor] = useState(null)
     const [resultadoCategoria, setResultadoCategoria] = useState(null)
+    const [desafiosLista,setDesafiosLista] = useState({})
     const Dado = ({rolando, valor})=>{
-        
+      
+
         useEffect(()=>{
+
+            setDesafiosLista(desafios)
             if(rolando){
                 const intervalo = setInterval(()=>{
                     const numeroAleatorio = Math.floor(Math.random() * 6)
@@ -35,7 +48,6 @@ function GirarDado({time}){
 
         setRolando(true)
         setDadoValor(null)
-        console.log(Desafios.Desafios)
         
         setTimeout(()=>{
             let resultado = Math.floor(Math.random() * 6)
@@ -45,10 +57,11 @@ function GirarDado({time}){
             setResultadoCategoria(resultado)
 
             setTimeout(()=>{
-                let desafioAtual = retirarDesafio(Desafios.Desafios[resultado].desafios)
-                let pontos = Desafios.Desafios[resultado].pontos
+                let desafioAtual = retirarDesafio(desafiosLista[resultado].desafios)
+                let pontos = desafiosLista[resultado].pontos
                 console.log(desafioAtual)
-                navigate('/Ponto', {state: {time: time, desafio: desafioAtual, nivel: pontos}})
+                localStorage.setItem('DynamicosDesafios',JSON.stringify(desafiosLista))
+                navigate('/Ponto', {state: {time: time, desafio: desafioAtual, nivel: pontos,index: index}})
             }, 1500) 
                
         },1500)
@@ -76,8 +89,8 @@ function GirarDado({time}){
                 <p style={{fontSize: 20,fontWeight: "bold", textAlign:"center"}}>
                     {resultadoCategoria != null &&
                     
-                    <>{Desafios.Desafios[resultadoCategoria].nome}
-                    <br/>{Desafios.Desafios[resultadoCategoria].pontos} pontos
+                    <>{desafiosLista[resultadoCategoria].nome}
+                    <br/>{desafiosLista[resultadoCategoria].pontos} pontos
                     
                     </>
                     
@@ -91,12 +104,13 @@ function GirarDado({time}){
 export default function Desafio(){
     const location = useLocation()
     const dadosRecebido = location.state?.times
-    
+    const index = Number.parseInt(location.state?.index)
+    console.log(index)
     return (
         <div >
-            <h1 className={`${style.headr}`}>Time: {dadosRecebido[0].nome} - Pontos: {dadosRecebido[0].pontos}</h1>
+            <h1 className={`${style.headr}`}>Time: {dadosRecebido[index].nome} - Pontos: {dadosRecebido[index].pontos}</h1>
             <section>
-                <GirarDado time={dadosRecebido[0]}/>
+                <GirarDado index={index} time={dadosRecebido[index]}/>
             </section>
         </div>
     )

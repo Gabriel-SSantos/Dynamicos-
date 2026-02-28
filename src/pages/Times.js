@@ -67,7 +67,7 @@ export default function Times(){
 
     useEffect(()=>{
         const Lista = JSON.parse(localStorage.getItem('DynamicosTimes'))
-        if(Lista.length > 1){
+        if(Lista && Lista.length > 1){
             setStart(true)
         } else setStart(false)
         setTimes(Lista)
@@ -95,7 +95,7 @@ export default function Times(){
             <div className={`${style.buton}`}
             >
                 {start &&
-                    <LinkButton to={"/Desafio"} text={"Começar Jogo"} state={{times:times}}/>
+                    <LinkButton to={"/Desafio"} text={"Começar Jogo"} state={{times:times,index:0}}/>
                 }
                 {}
             </div>

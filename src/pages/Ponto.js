@@ -5,7 +5,7 @@ export default function Ponto(){
     const location = useLocation()
     const navigate = useNavigate()
     const dadosRecebido = location.state
-    
+    console.log(dadosRecebido)
     const [seconds, setSeconds] = useState(60);
     const [isActive, setIsActive] = useState(false);
     
@@ -18,7 +18,7 @@ export default function Ponto(){
          
           setSeconds(prevSeconds => prevSeconds - 1);
           if(seconds < 0){
-             navigate('/Placar', {state:{times: dadosRecebido.time}})
+             navigate('/Placar', {state:{times: dadosRecebido.time, index:dadosRecebido.index}})
           }
         }, 1000);
       } else if (!isActive && seconds !== 0) {
@@ -51,7 +51,7 @@ export default function Ponto(){
     const pontuar=()=>{
         console.log(typeof( dadosRecebido.time.pontos))
         dadosRecebido.time.pontos = dadosRecebido.time.pontos + dadosRecebido.nivel
-        navigate('/Placar', {state:{times: dadosRecebido.time}})
+        navigate('/Placar', {state:{times: dadosRecebido.time, index:dadosRecebido.index}})
     }
     return (
         <div>

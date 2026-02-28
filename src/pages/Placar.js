@@ -1,34 +1,37 @@
 import { useEffect, useState, useRef } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import style from "../layout/styles/placar.module.css"
+import { FaTrophy } from "react-icons/fa";
+class Player{
+    constructor(x,y,l,a,color){
+        this.x = x;
+        this.y = y;
+        this.l = l;
+        this.a = a;
+        this.color = color
+    }
+    desenhar(ctx){
+        ctx.fillStyle = this.color
+        ctx.fillRect(this.x,this.y,this.l,this.a)
+    }
+}
+const largura = window.innerWidth
 export default function Placar(){
     const location = useLocation()
     const navigate = useNavigate()
     const [placar, setPlacar] = useState(null)
     const dados = location.state?.times
-    const proxTime=(times)=>{
-        const TAM = times.length
-        let temp = ""
-        for(let i = 0;i < TAM - 1;i++){
-            temp = times[i]
-            times[i] = times[i+1]
-            times[i+1] = temp
-        }
-        return times
-    }
-
-    const salvar = ()=>{
-        let times = proxTime(placar)
-        localStorage.setItem('DynamicosTimes',JSON.stringify(times))
-        navigate("/Desafio", {state:{times:placar}})
-    }
+    const index = location.state?.index
+    const [vencedor,setVencedor]=useState(null)
+    let times
+    
     const canvasRef = useRef(null);
     useEffect(()=>{
 
-        let times = JSON.parse(localStorage.getItem('DynamicosTimes')) || []
-        times[0].pontos = dados.pontos
-        if(times[0].pontos >= 58){
-            alert("Vencedor time: " + times[0].nome)
+        times = JSON.parse(localStorage.getItem('DynamicosTimes')) || []
+        times[index].pontos = dados.pontos
+        if(times[index].pontos >= 58){
+            setVencedor(times[index].nome)
         }
 
 
@@ -44,50 +47,51 @@ export default function Placar(){
            alert("Erro: Contexto 2D não suportado.");
             return;
         }
-
-        let player = {
-            x: 150,
-            y: 200,
-            l: 15,
-            a: 15,
-            color: "red",
-
-            desenhar(context){
-                ctx.fillStyle = this.color
-                ctx.fillRect(this.x,this.y,this.l,this.a)
-            }
+        let colors = ["red","blue","green","yelow","gray"]
+        let jogadores = []
+        for(let i = 0; i < times.length; i++){
+            jogadores.push(new Player((canvas.height/2 - 100) + (i*60),500 - times[i].pontos * 6.9,50,times[i].pontos * 6.9,colors[i]))
         }
-      
+
         let animationId;
         const render = ()=>{
-
             ctx.fillStyle = "#ffffff"; // Cinza claro
             ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#53535369"
+            ctx.fillRect(0, 0, canvas.width, 40);
+
+            ctx.fillStyle = "#ffffff";
+            ctx.font = "bold 20px sans-serif";
+            ctx.fillText(`CHEGADA`, canvas.height/2 - 100, 30);
+            
 
 
-            player.desenhar(ctx)   
+            for(let i = 0; i < jogadores.length; i++){
+                jogadores[i].desenhar(ctx)
+            }
 
             animationId = requestAnimationFrame(render)
         }
         render()
-        return () => cancelAnimationFrame(animationId)
         setPlacar(times)
-        console.log(times)
+
+        return () => cancelAnimationFrame(animationId)
+        
     },[])
 
-   
+   const salvar = ()=>{
+        localStorage.setItem('DynamicosTimes',JSON.stringify(placar))
+        let idx = (index + 1) % placar.length
+        navigate("/Desafio", {state:{times:placar,index:idx}})
+    }
+
+    
 
     return (
         <div>
             <h1 className={`${style.headr}`}>Placar</h1>
           <div className={`${style.container}`}>
-            <canvas
-                ref={canvasRef}
-                width={400}
-                height={400}
-                style={{width:"100%",height:"100%", marginBottom:"10px"}}
-            ></canvas>
-            {/* <section>
+            <section>
             {placar &&
                 placar.map((time,index)=>(
                     <div className={`${style.card}`}>
@@ -98,7 +102,30 @@ export default function Placar(){
                 ))
                 
             }
-            </section> */}
+            </section> 
+                <canvas
+                ref={canvasRef}
+                width={400}
+                height={500}
+                style={{width:"90%",height:"100%", marginBottom:"10px",borderRadius:"15px",border:"2px solid"}}
+            >
+               
+            </canvas>
+            {vencedor && 
+            <div className={`${style.vencedor}`}>
+                <div>
+                    <FaTrophy size={100}
+                    color="rgba(255, 170, 10)"
+                    />
+                    <p className={`${style.parabens}`}>PARABÉNS</p>
+                    <p>Time: {vencedor}</p>
+                </div>
+                <button 
+                    onClick={()=>navigate('/')}
+                >
+                    Voltar
+                </button>
+            </div>}
             <button
              className={`${style.buton}`}
                 onClick={
