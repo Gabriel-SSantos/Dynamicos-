@@ -89,7 +89,10 @@ export default function Ponto(){
                 >
                     Pontuar
                 </button></div>
+                
            </section>
+           <button className={`${style.passar}`}
+            onClick={()=>navigate(-1)}>Girar de Novo</button>
         </div>
     )
 }

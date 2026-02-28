@@ -1,4 +1,18 @@
+.passar{
+    background-color: #ff2020d7;
+    color: #ffffff;
+    padding: 0.5em;
+    text-decoration: none;
+    transition: 0.5s;
+    margin: 1em;
+    border: solid 1px;
+    border-color: rgb(190, 58, 74);
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
 
+   
+}
 
 .cardDesafio{
     background-color: white;
