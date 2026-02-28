@@ -7,30 +7,32 @@ import { BotaoCadastro } from '../pages/TimeCadastro';
 import { TimeEdit } from './TimeCadastro';
 import LinkButton from '../layout/LinkButton';
 
+import { BiPencil } from 'react-icons/bi';
+import { BiTrash } from 'react-icons/bi';
 export default function Times(){
 
     const Ficha = ({nome, pontos,id,edit,apagar})=>{
    
         return(
         <div className={`${style.card}`}>
-               
-                <div>
-                    <p>Nome: {nome}</p>
-                    <p>Pontos {pontos}</p>
-                </div>
-            <div>
-                <p
+            <div className={`${style.cardText}`}>
+                <p>Nome: {nome}</p>
+                <p>Pontos {pontos}</p>
+            </div>
+            <div className={`${style.cardActions}`}>
+                <BiPencil size={32}
                 style={{marginRight:"5px"}}
-                onClick={()=>edit(id)}>EDITAR</p>
-                <p
+                onClick={()=>edit(id)}/>
+                <BiTrash size={32}
                 onClick={()=>apagar(id)}
-                >APAGAR</p>
+                />
             </div>
         </div>
     )
     }
 
     const [times,setTimes] = useState()
+    const [start,setStart] = useState(false)
     const [cadastrar,setCadastrar] = useState(false)
     const [editavel,setEditavel] = useState(false)
     const [editIndex,setEditIndex] = useState(-1)
@@ -58,10 +60,16 @@ export default function Times(){
         })
         localStorage.setItem('DynamicosTimes',JSON.stringify(NovoVetor))
         setTimes(NovoVetor)
+        if(NovoVetor.length > 1){
+            setStart(true)
+        } else setStart(false)
     }
 
     useEffect(()=>{
         const Lista = JSON.parse(localStorage.getItem('DynamicosTimes'))
+        if(Lista.length > 1){
+            setStart(true)
+        } else setStart(false)
         setTimes(Lista)
     },[cadastrar,editavel])
 
@@ -82,14 +90,11 @@ export default function Times(){
                         pontos={time.pontos}
                         edit={indiceEdit}
                         apagar={Apagar}
-                        />)) }
+                        />))}
             
-            <div
-                style={{
-                    marginBottom: "80px",
-                }}
+            <div className={`${style.buton}`}
             >
-                {times &&
+                {start &&
                     <LinkButton to={"/Desafio"} text={"Começar Jogo"} state={{times:times}}/>
                 }
                 {}

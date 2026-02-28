@@ -29,22 +29,19 @@ export default function TiemCadastro({cadastramento}){
 
     return (
         <div className={`${style.cad_box}`}>
-        <div><spam style={{display:"flex"}} onClick={cadastramento}>X</spam><p style={{fontSize:"15px",textAlign:"center"}}>Preencha o formulário para fazer o cadastro</p></div>
-        
-        <div><p>Nome: </p><input 
-            type='text'
-            value={nome}
-            onChange={mudancaEstadoNome}
-            /></div>
-        
-        <button type='button'
-            className={`${style.button}`}
-            
-            onClick={()=>{
+            <span onClick={cadastramento}>X</span>
+            <div>
+                <input 
+                    type='text'
+                    placeholder="Nome do time"
+                    value={nome}
+                    onChange={mudancaEstadoNome}/>
+            </div>
+            <button type='button'
+                onClick={()=>{
                 cadastramento()
                 salvar({nome:nome})}}
-        >Salvar</button>
-    
+                >Salvar</button>
         </div>
     )
 }
@@ -67,19 +64,17 @@ export function TimeEdit({editavel,i}){
 
     return(
     <div className={`${style.cad_box}`}>
-        <div style={{width:"100%",display:"flex",justifyContent:"flex-start"}}><p style={{fontSize:"15px",textAlign:"center"}}>Preencha o formulário para fazer o cadastro</p><p onClick={editavel}>X</p></div>
+        <span onClick={editavel}>X</span>
+        <div><p style={{fontSize:"15px",textAlign:"center"}}>Faça a edição necessária</p></div>
         
-        <div><p>Nome: </p><input 
+        <div><input 
             type='text'
             value={nome}
             onChange={mudancaEstadoNome}
             /></div>
         
         <button type='button'
-            className={`${style.button}`}
-            
-            onClick={()=>{
-                
+            onClick={()=>{  
                 editavel()
                 salvar({nome:nome,i})
             }}

@@ -5,7 +5,7 @@ export default function Start(){
     return (
         <main 
         className={`${style.container}`}>
-            <h1>Dynamic'ools</h1>
+            <h1>Dynamic</h1>
             <div>
                 <LinkButton
                 to={"/Times"}

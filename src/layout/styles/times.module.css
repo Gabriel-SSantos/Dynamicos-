@@ -1,5 +1,4 @@
 .container{
-    background-color: rgb(240, 226, 216);
     display: flex;
     height: 700px;
     align-items: center;
@@ -11,34 +10,91 @@
    
 }
 
+.buton{
+    display: flex;
+    width: 90%;
+    align-items: flex-end;
+    height: 100%;
+}
 .botao{
-    /* display: flex; */
+
     text-align: center;
     width: auto;
     padding-left: 5px;
     padding-right: 5px;
-    background-color: #ffffffd7;
-    color: rgb(52, 47, 47);
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
     text-decoration: none;
     border: solid 3px;
-    border-color: rgb(255, 212, 94);
+    border-color: rgb(161, 33, 1);
     border-radius: 15px;
     font-size: 20px;
     font-weight: 500;
+    margin-bottom: 20px;
+}
+.botao p{
+    margin: 10px;
 }
 .cad_box{
+    position: fixed;
+    top: 150px;
+    width: 70%;
     margin-top: 15px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     border-radius: 15px;
     padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: solid;
-    border-color: rgb(132, 132, 132);
-    box-shadow: 4px 4px rgba(132, 132, 132, 0.439);
+}
+.cad_box span{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
 
-.button{
+.cad_box button{
+    width: 25%;
+    background-color: #ffd5d59c;
+    color: #000000;
+    padding: 0.5em;
+    transition: 0.5s;
+    margin: 1em;
+    border: solid;
+    border-radius: 30px;
+    font-size: 15px;
+}
+.cad_box div input{
+    border-radius: 15px;
+    font-size: 18px;
+    height: 25px;
+    padding-left: 10px;
+    border:solid 0.5px;
     
+}
+
+.card{
+    display: flex;
+    background-color: white;
+    border-radius: 25px;
+    font-size: 17px;
+    padding: 5px;
+    width: 90%;
+    margin: 5px;
+    /* border: solid ; */
+    box-shadow: 2px 2px rgb(237, 216, 216);
+}
+.card p{
+    margin: 7px;
+}
+
+.cardActions{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 50%;
+}
+
+.cardText{
+    width: 50%;
 }

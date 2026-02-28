@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import Desafios from "../data/dados.json"
-
+import style from "../layout/styles/desafio.module.css"
 function retirarDesafio(desafioLista){
   const j = Math.floor(Math.random() * (desafioLista.length))
   return desafioLista[j]
@@ -55,18 +55,17 @@ function GirarDado({time}){
     }
    
     return(
-        <div
-            
-        >
+        <div className={`${style.secDado}`}>
             <p style={{marginBottom: 10, fontSize: 18, fontWeight: "bold", textAlign: "center"}}>Gire para saber o tipo de desafio da partida</p>
-            <div>
+           
+            <div className={`${style.dado}`}>
                 <p>
                     {valorExibido}
                 </p>
             </div>
             <Dado rolando={rolando} valor={dadoValor}/>
             <button
-                
+                className={`${style.buton}`}
                 onClick={
                     rodar
                 }
@@ -74,12 +73,11 @@ function GirarDado({time}){
                 <p>Girar</p>
             </button>
             
-                <p style={{fontSize: 20}}>
+                <p style={{fontSize: 20,fontWeight: "bold", textAlign:"center"}}>
                     {resultadoCategoria != null &&
                     
-                    <>Categoria: {Desafios.Desafios[resultadoCategoria].nome}
-                    <br/>Pontos:
-                    {Desafios.Desafios[resultadoCategoria].pontos}
+                    <>{Desafios.Desafios[resultadoCategoria].nome}
+                    <br/>{Desafios.Desafios[resultadoCategoria].pontos} pontos
                     
                     </>
                     
@@ -93,11 +91,10 @@ function GirarDado({time}){
 export default function Desafio(){
     const location = useLocation()
     const dadosRecebido = location.state?.times
-    const [desafios,setDesafios] = useState()
     
     return (
-        <div>
-            <h1>Time: {dadosRecebido[0].nome} Pontos: {dadosRecebido[0].pontos}</h1>
+        <div >
+            <h1 className={`${style.headr}`}>Time: {dadosRecebido[0].nome} - Pontos: {dadosRecebido[0].pontos}</h1>
             <section>
                 <GirarDado time={dadosRecebido[0]}/>
             </section>

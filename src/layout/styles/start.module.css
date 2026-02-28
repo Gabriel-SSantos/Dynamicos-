@@ -1,18 +1,25 @@
 .container{
-    background-color: rgb(240, 226, 216);
+    /* background-color: #fff585; */
     display: flex;
-    height: 700px;
+    height: 800px;
     align-items: center;
     justify-content: space-around;
     margin: 10; 
     flex-direction: column;
+    /* background-image: url("../../assets/fundo1.jpeg"); */
     /* flex-wrap: wrap;  */
 }
 .container h1{
-    font-size: 50px;
+    font-size: 55px;
+    font-weight: 900;
+    background: linear-gradient(to top,rgb(255, 0, 0),rgb(134, 47, 0),black);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     color: rgb(190, 58, 74);
 }
 .container div{
     display: flex;
+    width: 80%;
 
 }

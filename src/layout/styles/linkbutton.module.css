@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center; 
     width: 100%;
-    background-color: #ffffff;
+    background-color: #ffffffd7;
     color: #ac7048;
     padding: 0.5em;
     text-decoration: none;
@@ -11,8 +11,8 @@
     margin: 1em;
     border: solid;
     border-color: rgb(190, 58, 74);
-    box-shadow: 2px 2px rgba(190, 58, 73, 0.76);
-    border-radius: 15px;
+    box-shadow: 2px 2px rgba(190, 58, 73, 0.422);
+    border-radius: 30px;
     font-size: 30px;
     font-weight: 500;
 
