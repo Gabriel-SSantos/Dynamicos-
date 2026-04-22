@@ -7,6 +7,8 @@ import { BotaoCadastro } from '../pages/TimeCadastro';
 import { TimeEdit } from './TimeCadastro';
 import LinkButton from '../layout/LinkButton';
 
+import Cadastro from './Cadastro';
+
 import { BiPencil } from 'react-icons/bi';
 import { BiTrash } from 'react-icons/bi';
 export default function Times(){
@@ -94,6 +96,7 @@ export default function Times(){
             
             <div className={`${style.buton}`}
             >
+            <Cadastro/>
                 {start &&
                     <LinkButton to={"/Desafio"} text={"Começar Jogo"} state={{times:times,index:0}}/>
                 }

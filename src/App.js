@@ -4,6 +4,8 @@ import Times from './pages/Times';
 import Desafio from './pages/Desafio';
 import Ponto from './pages/Ponto';
 import Placar from './pages/Placar';
+import Perguntas from './pages/Perguntas';
+import Sentencas from './pages/Sentencas';
 import { WiDayCloudy } from 'react-icons/wi';
 function App() {
 
@@ -14,12 +16,14 @@ function App() {
     // const verificarRotas = rotasFull.includes(location.pathname)
     return (
       <>
-          <div  style={{height: "100%"}}>
+          <div  style={{height: "100%", width:"100%"}}>
           <Routes>
             <Route exact path='/' Component={Start}></Route>
             <Route exact path='/Times' Component={Times}></Route>
             <Route exact path='/Desafio' Component={Desafio}></Route>
             <Route exact path='/Ponto' Component={Ponto}></Route> 
+            <Route exact path='/Perguntas' Component={Perguntas}></Route>
+            <Route exact path='/Sentencas' Component={Sentencas}></Route>
             <Route exact path='/Placar' Component={Placar}></Route>
           </Routes>
           </div>

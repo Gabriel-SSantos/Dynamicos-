@@ -6,7 +6,7 @@ export const BotaoCadastro=({cadastramento})=>{
         <div 
             onClick={cadastramento}
             className={`${style.botao}`}>
-            <p>Adicionar Time</p>
+            <p>Adicionar Desafios</p>
         </div>
     )
 }
