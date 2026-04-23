@@ -8,7 +8,7 @@ function retirarDesafio(desafioLista){
 }
 
 export default function Sentencas(){
-    const sentencasLista = ['Medo', 'Ansiedade', 'Frieza Espiritual','Desânimo']
+    const sentencasLista = ['Medo', 'Ansiedade', 'Frieza Espiritual','Desânimo','Culpa','Vício']
     let sentenca = retirarDesafio(sentencasLista)
     const [revelado,setRevelado] = useState(false)
     return(
